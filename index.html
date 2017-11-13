@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="utf-8">
+
+	<title>Single Page App With Custom Framework</title>
+
+<!--	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet">  -->
+	<link href="assets/css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<header class="compact">
+		<h2 class="tzine"><a href="javascript:void(0)">SEARCH</a></h2>
+		<h1><a href="#">Single Page App With Custom Framework</a></h1>
+	</header>
+
+	<div class="main-content">
+
+		<div class="all-products page">
+
+			<div class="filters">
+				<form>
+
+					<div class="filter-criteria">
+						<input class="field_search" type="search" placeholder="AUTHOR">
+					</div>
+
+					<div class="filter-criteria">
+						<input class="field_search" type="search" placeholder="TITLE">
+					</div>
+
+				</form>
+
+				<button class="filters-button">SEARCH</button>
+				<p class="border"></p>
+
+
+			<!--	<button>Clear filters</button> -->
+				<div class="filter-criteria">
+					<input class="field_search search-input" data-list="products-list" type="search" placeholder="FILTER">
+				</div>
+
+				<div class="sort-buttons">
+						<button class="sort desc" data-sort="title">Title</button>
+						<button class="sort asc" data-sort="author">Author</button>
+				</div>
+
+			</div>
+
+
+<!-- ****************************************** ALL PRODUCT PAGE ****************************************** -->
+			<ul class="products-list">
+<!--  https://stackoverflow.com/questions/4912586/explanation-of-script-type-text-template-script
+By setting the type to "text/template", it's not a script that the browser can understand, and so the browser will simply ignore it. This allows you to put anything in there, which can then be extracted later and used by a templating library to generate HTML snippets.
+ -->
+				<script id="products-template" type = "text/template">​
+							<%for(var item in this.data) {%>
+							<li data-index= "<%this.data[item].id%>"  title="<%this.data[item].volumeInfo.title%>"  author="<%this.data[item].volumeInfo.authors%>" >
+								<a href="#" class="product-photo"><img src="<%this.data[item].volumeInfo.imageLinks.thumbnail%>" height="130" alt="<%this.data[item].volumeInfo.title%>"/></a>
+								<h2><a href="#"> <%this.data[item].volumeInfo.title%> </a></h2>
+								<ul class="product-description">
+									 <li><span>Author: </span><%this.data[item].volumeInfo.authors%></li>
+									 <li><span>Publisher </span><%this.data[item].volumeInfo.publisher%> </li>
+									 <li><span>Published Date: </span><%this.data[item].volumeInfo.publishedDate%></li>
+									 <li><span>Rating: </span><%this.data[item].volumeInfo.averageRating%> STARS</li>
+								</ul>
+								<button>Visit Site!</button>
+								<p class="product-price">100 $</p>
+								<div class="highlight"></div>
+							</li>
+							<%}%>;
+				</script>
+
+
+			</ul>
+<!-- ****************************************** ALL PRODUCT PAGE ****************************************** -->
+
+
+				<div class="paging-center">
+				  <div id="pagination"> PAGINATION </div>
+				</div>
+
+
+		</div>
+
+<!-- ****************************************** SINGLE PRODUCT PAGE ****************************************** -->
+		<div class="single-product page">
+			<div class="overlay"></div>
+			<div class="preview-large">
+				<h3>Single product view</h3>
+				<img src=""/>
+				<p></p>
+				<span class="close">×</span>
+			</div>
+		</div>
+<!-- ****************************************** SINGLE PRODUCT PAGE ****************************************** -->
+
+<!-- ****************************************** ERROR PAGE ****************************************** -->
+		<div class="error page">
+			<h3>Sorry, something went wrong :(</h3>
+		</div>
+<!-- ****************************************** ERROR PAGE ****************************************** -->
+
+	</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script> -->
+
+	<script src="assets/js/pagination.js"></script>
+	<script src="assets/js/templatingEngine.js"></script>
+	<script src="assets/js/pubsub.js"></script>
+	<script src="assets/js/FrameWork.js"></script>
+	<!-- <script src="assets/js/script.js"></script>	-->
+	<script src="assets/js/CustomAngularJS.js"></script>
+
+
+</body>
+</html>
